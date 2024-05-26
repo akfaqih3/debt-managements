@@ -91,7 +91,7 @@
 </div>
 
 
-<div dir="auto" class="modal fade" id="addProductModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="addProductModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header bg-primary text-white">
@@ -99,14 +99,14 @@
             <i class="fa fa-tag"></i>
             عملية جديدة
           </h5>
-          <button class="close text-white" type="button" data-dismiss="modal" aria-label="Close">
+          <button class="close text-white ml-0" type="button" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">×</span>
           </button>
         </div>
         <form class="">
           <div class="modal-body">
-            <div class="form-group float-end">
-              <label>اسم الحساب</label>
+            <div class="form-group">
+              <label class="">اسم الحساب</label>
               <select class="form-control text-primary" required>
                 <option disabled selected><sub>يرجى إختيار حساب</sub></option>
                 {% for account in accounts %}
@@ -144,4 +144,4 @@
         </form>
       </div>
     </div>
-  </div>
+</div>
