@@ -1,0 +1,147 @@
+<div class="container position-relative mt-4" style="height: 500px;">
+    <ul class="nav nav-tabs w-100 text-center">
+        <li class="nav-item w-50"><a href="#operations" class="nav-link" data-toggle="tab">الحركة</a></li>
+        <li class="nav-item w-50"><a href="#accounts" class="nav-link" data-toggle="tab">الحسابات</a></li>
+    </ul>
+
+    <div class="tab-content mt-4">
+        <div class="tab-pane active container" id="operations">
+            <div class="card mb-3">
+                <div class="card-header text-center">
+                  <a href="#" class="btn btn-outline-primary" data-toggle="modal" data-target="#addProductModal">
+                    <span class="float-right">
+                      <i class="fa fa-plus"></i>
+                      عملية جديدة
+                    </span>
+                  </a>
+                </div>
+                <div class="card-body" dir="ltr">
+                  <div class="table-responsive">
+                    <table class="table table-bordered text-center"  id="dataTable" dir="rtl" width="100%" cellspacing="0">
+                      <thead>
+                        <tr>
+                          <th>الحساب</th>
+                          <th>البيانات</th>
+                          <th>المبلغ</th>
+                        </tr>
+                      </thead>
+                      <tfoot>
+                        <tr>
+                            <th>الحساب</th>
+                            <th>البيانات</th>
+                            <th>المبلغ</th>
+                        </tr>
+                      </tfoot>
+                      <tbody>{% comment %}
+                        {% for op in operations %}
+                        <tr>
+                          <td><a href="#">{{op.account_id}}</a></td>
+                          <td>{{op.content}}</td>
+                          <td>{{op.value}}</td>
+                        </tr>
+                        {% endfor %}{% endcomment %}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+            </div>
+        </div>
+        <div class="tab-pane container" id="accounts">
+            <div class="card mb-3">
+                <div class="card-header text-center">
+                  <a href="#" class="btn btn-outline-primary" data-toggle="modal" data-target="#addProductModal">
+                    <span class="float-right">
+                      <i class="fa fa-plus"></i>
+                      حساب جديد
+                    </span>
+                  </a>
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive text-center">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                      <thead>
+                        <tr>
+                          <th>الاسم</th>
+                          <th>المبلغ</th>
+                        </tr>
+                      </thead>
+                      <tfoot>
+                        <tr>
+                            <th>الاسم</th>
+                            <th>المبلغ</th>
+                        </tr>
+                      </tfoot>
+                      <tbody>
+                        {% for acc in accounts %}
+                        <tr>
+                          <td><a href="#">{{acc.name}}</a></td>
+                          <td>{{acc.allow_max}}</td>
+                        </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<div dir="auto" class="modal fade" id="addProductModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header bg-primary text-white">
+          <h5 class="modal-title" id="exampleModalLabel">
+            <i class="fa fa-tag"></i>
+            عملية جديدة
+          </h5>
+          <button class="close text-white" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <form class="">
+          <div class="modal-body">
+            <div class="form-group float-end">
+              <label>اسم الحساب</label>
+              <select class="form-control text-primary" required>
+                <option disabled selected><sub>يرجى إختيار حساب</sub></option>
+                {% for account in accounts %}
+                <option value="">{{account.name}}</option>
+                {% endfor %}
+              </select>
+              <small class="float-right">الحساب ليس موجود? <a href="#"data-toggle="modal" data-target="#NewAccountModal">إضافة</a> </small>
+            </div> 
+            <div class="form-group">
+              <label for="">المبلغ</label>
+              <input type="number" class="form-control" name="" value="" placeholder="ادخل المبلغ..." required>
+            </div>
+            <div class="form-group text-center">
+              <label>نوع العملية</label>
+              <div class="d-flex justify-content-around">
+                <div>
+                    <label for="withdrow">سحب</label>
+                    <input type="radio" name="withdrow" id="withdrow">
+                </div>
+                <div>
+                    <label for="dispot">إيداع</label>
+                    <input type="radio" name="dispot" id="dispot">
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="">الوصف <small class="text-muted">(إختياري)</small></label>
+              <textarea name="name" class="form-control" cols="80" placeholder="الوصف..."></textarea>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">إلغاء</button>
+            <input type="submit" class="btn btn-primary" value="حفظ">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
