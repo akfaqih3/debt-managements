@@ -2,7 +2,7 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-primary">
   <div class="container">
     <a class="navbar-brand" href="{% url 'Home' %}">إدارة الديون</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" dir="ltr" id="navigation">
@@ -12,14 +12,9 @@
             <i class="fa fa-plus fa-fw"></i>
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="messagesDropdown">
-            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#addSaleModal"> <i class="fa fa-money"></i> New Sale</a>
-            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#addProductModal"> <i class="fa fa-tag"></i> New Product</a>
+            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#NewTransaction"> <i class="fa fa-money"></i> عملية جديدة  </a>
+            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#NewAccount"> <i class="fa fa-tag"></i> حساب جديد</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#addProductTypeModal"> <i class="fa fa-tags"></i> New Product Type</a>
-            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#addProductVendorModal"> <i class="fa fa-user"></i> New Product Vendor</a>
-            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#addProductBrandModal"> <i class="fa fa-industry"></i> New Product Brand</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#addExpenseAccountModal"> <i class="fa fa-dollar"></i> New Expense Account</a>
           </div>
         </li>
         <li class="nav-item dropdown no-arrow mx-1">
@@ -27,15 +22,8 @@
             <i class="fa fa-flash fa-fw"></i>
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="messagesDropdown">
-            <a class="dropdown-item" href="products.html"> <i class="fa fa-tag"></i> All Products</a>
-            <a class="dropdown-item" href="product-types.html"> <i class="fa fa-tags"></i> Product Types</a>
-            <a class="dropdown-item" href="product-vendors.html"> <i class="fa fa-user"></i> Product Vendors</a>
-            <a class="dropdown-item" href="product-brands.html"> <i class="fa fa-industry"></i> Product Brands</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="revenue.html"> <i class="fa fa-money"></i> Revenue</a>
-            <a class="dropdown-item" href="improvements.html"> <i class="fa fa-rocket"></i> Improvements</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="accounts.html"> <i class="fa fa-dollar"></i> Accounts</a>
+            <a class="dropdown-item" href="#"> <i class="fa fa-tag"></i> كشف حساب</a>
+            <a class="dropdown-item" href="#"> <i class="fa fa-tags"></i> تقرير يومي</a>
           </div>
         </li>
         <li class="nav-item dropdown no-arrow ml-3">
@@ -57,13 +45,13 @@
             <i class="fa fa-user-circle fa-fw"></i>
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-            <div class="dropdown-header">Rao Ahmed</div>
-            <a class="dropdown-item" href="profile.html"> <i class="fa fa-user"></i> Profile</a>
+            <div class="dropdown-header">أكرم قاسم</div>
+            <a class="dropdown-item" href=""> <i class="fa fa-user"></i> الملف الشخصي</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#"> <i class="fa fa-cog"></i> Settings</a>
-            <a class="dropdown-item" href="history.html"> <i class="fa fa-line-chart"></i> Activity Log</a>
+            <a class="dropdown-item" href="#"> <i class="fa fa-cog"></i> الاعدادات</a>
+            <a class="dropdown-item" href=""> <i class="fa fa-line-chart"></i> إحصائيات</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal"> <i class="fa fa-power-off"></i> Logout</a>
+            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal"> <i class="fa fa-power-off"></i> تسجيل خروج</a>
           </div>
         </li>
       </ul>

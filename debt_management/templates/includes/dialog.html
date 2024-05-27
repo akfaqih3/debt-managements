@@ -1,0 +1,87 @@
+
+<div class="modal fade" id="NewAccount" tabindex="-1" aria-labelledby="accountModalLabel" aria-hidden="true" >
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="accountModalLabel">حساب جديد</h4>
+                <button class="btn btn-outline-danger" type="button" data-dismiss="modal" aria-label="close">X</button>
+            </div>
+            <div class="modal-body">
+                <form action="">
+                    <div class="form-group d-flex flex-column align-items-start">
+                        <label for="name" class="form-label-group">الاسم</label>
+                        <input type="text" class="form-control" id="name">
+                    </div>
+                    <div class="form-group d-flex flex-column align-items-start">
+                        <label for="phone" class="form-label-group">الرقم</label>
+                        <input type="tel" class="form-control" id="phone">
+                    </div>
+                    <div class="form-group d-flex flex-column align-items-start">
+                        <label for="allow_max" class="form-label-group">أعلى قيمة مسموح بها</label>
+                        <input type="number" class="form-control" id="allow_max">
+                    </div>
+                    <div class="form-group d-flex flex-column align-items-start">
+                        <label for="type" class="form-label-group">نوع الحساب</label>
+                        <select name="type" id="type" class="form-control">
+                            <option value="credit" class="form-select">دائن</option>
+                            <option value="debit">مدين</option>
+                        </select>
+                    </div>
+                    <div class="form-group d-flex flex-row align-items-center">
+                        <input type="checkbox" name="active" id="active" class="form-check-inline">
+                        <label for="active" class="form-check-label">نشط</label>
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal-footer d-flex justify-content-around">
+                <button class="btn btn-success w-50 ml-2" type="button">حفظ</button>
+                <button class="btn btn-secondary w-50 mr-2" type="button" data-dismiss="modal">إلغاء</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="NewTransaction" tabindex="-1" aria-labelledby="TransactionModalLabel" aria-hidden="true" >
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="TransactionModalLabel">عملية جديدة</h4>
+                <button class="btn btn-outline-danger" type="button" data-dismiss="modal" aria-label="close">X</button>
+            </div>
+            <div class="modal-body">
+                <form action="">
+                    <div class="form-group d-flex flex-column align-items-start">
+                        <label for="type" class="form-label-group">نوع العملية</label>
+                        <select name="type" id="type" class="form-control">
+                            <option value="withdrow" class="form-select">سحب</option>
+                            <option value="dispot">سداد</option>
+                        </select>
+                    </div>
+                    <div class="form-group d-flex flex-column align-items-start">
+                        <label for="account" class="form-label-group">الحساب</label>
+                        <select name="account" id="account" class="form-control">
+                            <option value="0" >يرجى إختيار الحساب</option>
+                           {% for account in Accounts %}
+                                <Option value="{{account.name}}">{{account.name}}</Option>
+                           {% endfor %}
+                        </select>
+                        <small class="float-right">الحساب ليس موجود? <a href="#"data-toggle="modal" data-target="#NewAccount">إضافة</a> </small>                    
+                    </div>
+                    <div class="form-group d-flex flex-column align-items-start">
+                        <label for="balance" class="form-label-group">المبلغ</label>
+                        <input type="number" class="form-control" id="balance">
+                    </div>
+                    <div class="form-group d-flex flex-column align-items-start">
+                        <label for="content" class="form-label-group">البيان</label>
+                        <textarea name="content" class="form-control" id="content"></textarea>
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal-footer d-flex justify-content-around">
+                <button class="btn btn-success w-50 ml-2" type="button">حفظ</button>
+                <button class="btn btn-secondary w-50 mr-2" type="button" data-dismiss="modal">إلغاء</button>
+            </div>
+        </div>
+    </div>
+</div>

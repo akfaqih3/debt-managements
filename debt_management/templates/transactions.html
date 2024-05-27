@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="row m-auto justify-content-center">
+        <div class="card mt-4 w-100">
+            <div class="card-header text-center">
+                <h2 class="card-title text-primary ">{{Account}}</h2>
+                <div class="card-group justify-content-around">
+                    <div class="card-columns">
+                        <p class="card-text">نوع الحساب: <span>{{transactions.balance}}</span></p>
+                    </div>
+                    <div class="card-columns">
+                        <p class="card-text">الحد الاعلى: <span>{{transactions.balance}}</span></p>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="card-body">
+                <div class="card-group justify-content-around">
+                    <div class="card-columns">
+                        <p class="card-text">السحب: <span>{{transactions.balance}}</span></p>
+                    </div>
+                    <div class="card-columns">
+                        <p class="card-text">السداد: <span>{{transactions.balance}}</span></p>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="card-footer">
+                <div class="card-group justify-content-around">
+                    <div class="card-columns ">
+                        <p class="card-text">المتبقي: <span>{{transactions.balance}}</span></p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+{% endblock content %}

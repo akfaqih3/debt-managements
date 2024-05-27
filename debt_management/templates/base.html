@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    {% include 'includes/head.html' %}
+</head>
+<body>
+    <header>
+        {% include 'includes/header.html' %}
+    </header>
+
+    <main class="container">
+        {% block content %}
+
+        {% endblock content %}
+    </main>
+    {% include 'includes/dialog.html' %}
+    {% include 'includes/scripts.html' %}
+</body>
+</html>

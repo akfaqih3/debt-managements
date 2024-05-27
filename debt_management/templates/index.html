@@ -1,17 +1,5 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-    {% include 'includes/head.html' %}
-</head>
-<body>
-    <header>
-        {% include 'includes/header.html' %}
-    </header>
+{% extends 'base.html' %}
 
-    <main>
-        {% include 'includes/main.html' %}
-    </main>
-
-    {% include 'includes/scripts.html' %}
-</body>
-</html>
+{% block content %}
+    {% include 'includes/main.html' %}
+{% endblock content %}
