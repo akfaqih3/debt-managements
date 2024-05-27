@@ -34,10 +34,10 @@
                       </tfoot>
                       <tbody>
                         {% for Tran in Transactions %}
-                        <tr>
+                        <tr onclick="{location.href=''}">
                           <td><a href="{% url 'transactions' Tran.account.id  %}">{{Tran.account}}</a></td>
                           <td>{{Tran.content}}</td>
-                          {% if Tran.type == 'withdrow' %}
+                          {% if Tran.type == 'سحب' %}
                             <td class="text-danger">{{Tran.balance}}</td>
                           {% else %}
                               <td class="text-success">{{Tran.balance}}</td>
@@ -80,8 +80,8 @@
                         {% for acc in Accounts %}
                         <tr>
                           <td><a href="#">{{acc.name}}</a></td>
-                          {% if acc.account_type == 'debit' %}
-                            <td class="text-success">مدين</td>
+                          {% if acc.type == 'مدين' %}
+                            <td class="text-success">{{acc.type}}</td>
                           {% else %}
                             <td class="text-danger">دائن</td>
                           {% endif %} 

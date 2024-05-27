@@ -5,34 +5,52 @@
         <div class="card mt-4 w-100">
             <div class="card-header text-center">
                 <h2 class="card-title text-primary ">{{Account}}</h2>
-                <div class="card-group justify-content-around">
-                    <div class="card-columns">
-                        <p class="card-text">نوع الحساب: <span>{{transactions.balance}}</span></p>
-                    </div>
-                    <div class="card-columns">
-                        <p class="card-text">الحد الاعلى: <span>{{transactions.balance}}</span></p>
-                    </div>
-                </div>
-                
+                <p class="card-text ">نوع الحساب:
+                    <span class="text-success {% if Account.type == 'دائن' %}text-danger {% endif %}">{{Account.type}}</span>
+                </p>
+                <p class="card-text">الحد الاعلى: <span>{{Account.allow_max}}</span></p>
             </div>
             <div class="card-body">
-                <div class="card-group justify-content-around">
-                    <div class="card-columns">
-                        <p class="card-text">السحب: <span>{{transactions.balance}}</span></p>
-                    </div>
-                    <div class="card-columns">
-                        <p class="card-text">السداد: <span>{{transactions.balance}}</span></p>
-                    </div>
+                <div class="card-group justify-content-around align-items-start">
+                    <p class="card-text">السحب: <span >{{withdraw}}</span></p>
+                    <p class="card-text">السداد: <span >{{deposit}}</span></p>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="card-group align-items-start justify-content-around">
+                    <p class="card-text">المتبقي: <span class="text-success {% if Account.type == 'دائن' %} text-danger {% endif %}">{{remaining}}</span></p>
                 </div>
                 
             </div>
+        </div>
+
+        <div class="card mt-4 w-100">
+            <div class="card-header text-center">
+                <h4 class="card-title text-primary ">جميع العمليات</h4>                
+            </div>
+            <div class="card-body">
+               <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <th>المبلغ</th>
+                            <th>العملية</th>
+                            <th>البيان</th>
+                            <th>التاريخ</th>
+                        </thead>
+                        <tbody>
+                            {% for Trans in transactions %}
+                                <tr>
+                                <td>{{Trans.balance}}</td>
+                                <td>{{Trans.type}}</td>
+                                <td >{{Trans.content}}</td>
+                                <td>{{Trans.date}}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+               </div>
+            </div>
             <div class="card-footer">
-                <div class="card-group justify-content-around">
-                    <div class="card-columns ">
-                        <p class="card-text">المتبقي: <span>{{transactions.balance}}</span></p>
-                    </div>
-                </div>
-                
             </div>
         </div>
     </div>
