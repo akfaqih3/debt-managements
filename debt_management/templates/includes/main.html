@@ -37,13 +37,16 @@
                       <tbody>
                         {% for Tran in Transactions %}
                         <tr class="table_row">
-                          <td><a href="{% url 'transactions' Tran.account.id  %}">{{Tran.account}}</a></td>
-                          <td>{{Tran.content}}</td>
-                          <td class="text-success {% if Tran.type == 'سحب' %} text-danger {% endif %}" >{{Tran.balance}}</td>
+                          <td id="pk" class="d-none">{{Tran.pk}}</td>
+                          <td id="account"><a href="{% url 'transactions' Tran.account.id  %}">{{Tran.account}}</a></td>
+                          <td id="content">{{Tran.content}}</td>
+                          <td id="balance" class="text-success {% if Tran.type == 'سحب' %} text-danger {% endif %}" >{{Tran.balance}}</td>
+                          <td id="type" class="d-none">{{Tran.type}}</td>
+                          <td id="date" class="d-none">{{Tran.date}}</td>
                           <td class="w-25">
                             <div class="btns_actions w-100 d-flex justify-content-around">
-                              <button class="btn btn-outline-primary btn-sm" id="btn_update" type="button" data-toggle="modal" data-target="#actionModal">تعديل</button>
-                              <button class="btn btn-outline-danger btn-sm" id="btn_delete" type="button" data-toggle="modal" data-target="#deleteTransaction">حذف</button>
+                              <button class="btn btn-outline-primary btn-sm btn_update_transaction" id="btn_update"  type="button" data-toggle="modal" data-target="#updateTransaction" value="{{Tran}}">تعديل</button>
+                              <button class="btn btn-outline-danger btn-sm btn_delete" id="btn_delete" type="button" data-toggle="modal" data-target="#deleteTransaction" data-tran-id="{{Tran.id}}">حذف</button>
                             </div>
                           </td>
                         </tr>
@@ -71,26 +74,30 @@
                       <thead>
                         <tr>
                           <th>الاسم</th>
-                          <th>المبلغ</th>
+                          <th>نوع الحساب</th>
                           <th>تحكم</th>
                         </tr>
                       </thead>
                       <tfoot>
                         <tr>
                             <th>الاسم</th>
-                            <th>المبلغ</th>
+                            <th>نوع الحساب</th>
                             <th>تحكم</th>
                         </tr>
                       </tfoot>
                       <tbody>
                         {% for acc in Accounts %}
-                        <tr>
-                          <td><a href="{% url 'accounts' acc.pk  %}">{{acc.name}}</a></td>
-                            <td class="text-success {% if acc.type == 'مدين' %} text-danger {% endif %}">{{acc.type}}</td>
+                        <tr id="rowAccount">
+                          <td id="pk" class="d-none">{{acc.pk}}</td>
+                          <td id="name"><a href="{% url 'accounts' acc.pk  %}">{{acc.name}}</a></td>
+                          <td class="{% if acc.type == 'مدين' %} text-danger {% else %} text-success  {% endif %}"><span id="type">{{acc.type}}</span></td>
+                          <td id="phone" class="d-none">{{acc.phone}}</td>
+                          <td id="allow_max" class="d-none">{{acc.allow_max}}</td>
+                          <td id="active" class="d-none">{{acc.active}}</td>
                           <td class="w-25">
                             <div class="btns_actions w-100 d-flex justify-content-around">
-                              <button class="btn btn-outline-primary btn-sm" id="btn_update" type="button" data-toggle="modal" data-target="#actionModal">تعديل</button>
-                              <button class="btn btn-outline-danger btn-sm" id="btn_delete" type="button" data-toggle="modal" data-target="#deleteTransaction">حذف</button>
+                              <button class="btn btn-outline-primary btn-sm btn_update_account" id="btn_update" type="button" data-toggle="modal" data-target="#updateAccount">تعديل</button>
+                              <button class="btn btn-outline-danger btn-sm btn_delete_account" id="btn_delete" type="button" data-toggle="modal" data-target="#deleteAccount" data-account-id="{{acc.id}}">حذف</button>
                             </div>
                           </td>
                         </tr>
@@ -105,3 +112,4 @@
     </div>
 
 </div>
+

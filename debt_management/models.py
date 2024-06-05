@@ -13,7 +13,7 @@ class Account(models.Model):
     phone = models.CharField(max_length=16,verbose_name='رقم الموبايل',null=True,blank=True)
     allow_max = models.DecimalField(default=3000.00,max_digits=7 , decimal_places=2,verbose_name='اعلى قيمة مسموح بها')
     type= models.CharField(max_length=16, default=A_type[0],choices=A_type,verbose_name='نوع الحساب')
-    # image = models.ImageField(upload_to='images/%y/%m/%d/',null=True,blank=True,verbose_name='صورة الحساب')
+    #image = models.ImageField(upload_to='images/%y/%m/%d/',null=True,blank=True,verbose_name='صورة الحساب')
     register_date = models.DateField(default=date.today,verbose_name='تاريخ تسجيل الحساب')
     active = models.BooleanField(default=True,verbose_name='حالة الحساب')
 
@@ -22,11 +22,12 @@ class Account(models.Model):
     
     class Meta:
         verbose_name='الحسابات'
+        
 
 class Transaction(models.Model):
     T_type=[
         ('سحب','سحب'),
-        ('إصال','إصال')
+        ('سداد','سداد')
         ]
 
     type = models.CharField(max_length=16,default=T_type[0],choices=T_type,verbose_name='نوع العملية')

@@ -35,20 +35,29 @@
             </div>
             <div class="card-body">
                <div class="table-responsive">
-                    <table class="table table-hover">
+                    <table class="table table-hover text-center">
                         <thead>
                             <th>المبلغ</th>
                             <th>العملية</th>
                             <th>البيان</th>
                             <th>التاريخ</th>
+                            <th>تحكم</th>
                         </thead>
                         <tbody>
-                            {% for Trans in transactions %}
+                            {% for Tran in transactions %}
                                 <tr>
-                                <td>{{Trans.balance}}</td>
-                                <td>{{Trans.type}}</td>
-                                <td >{{Trans.content}}</td>
-                                <td>{{Trans.date}}</td>
+                                <td id="pk" class="d-none">{{Tran.pk}}</td>
+                                <td id="account" class="d-none">{{Tran.account}}</td>
+                                <td id="balance">{{Tran.balance}}</td>
+                                <td id="type">{{Tran.type}}</td>
+                                <td id="content">{{Tran.content}}</td>
+                                <td id="date">{{Tran.date}}</td>
+                                <td class="">
+                                    <div class="btns_actions w-100 d-flex justify-content-around">
+                                        <button class="btn btn-outline-primary btn-sm btn_update_transaction" id="btn_update"  type="button" data-toggle="modal" data-target="#updateTransaction" value="{{Tran}}">تعديل</button>
+                                      <button class="btn btn-outline-danger btn-sm btn_delete" id="btn_delete" type="button" data-toggle="modal" data-target="#deleteTransaction" data-tran-id="{{Tran.id}}">حذف</button>
+                                    </div>
+                                  </td>
                                 </tr>
                             {% endfor %}
                         </tbody>
