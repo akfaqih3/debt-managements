@@ -16,14 +16,13 @@ $(document).ready(function(){
         var form = $("#updateTransaction").find("form");
         var row = $(this).closest("tr");
         var transaction_date = convertDate(row.find("#date").text());
-        
-        form.find("#pk").val(row.find("#pk").text());
-        form.find("#type").val(row.find("#type").text());
-        form.find("#account").val(row.find("#account").text());
-        form.find("#balance").val(row.find("#balance").text());
-        form.find("#content").val(row.find("#content").text());
-        form.find("#transaction_date").val(transaction_date);
 
+        form.find("#pk").val(row.find("#pk").text());
+        form.find("#id_type").val(row.find("#type").text());
+        form.find("#id_account").val(row.find("#account").text());
+        form.find("#id_balance").val(row.find("#balance").text());
+        form.find("#id_content").val(row.find("#content").text());
+        //form.find("#transaction_date").val(transaction_date);
     });
 
     $(".btn_update_account").click(function(){

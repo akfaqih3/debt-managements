@@ -1,32 +1,56 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div class="row m-auto justify-content-center">
-        <div class="card mt-4 w-100" id="rowAccount">
-            <div class="card-header text-center">
-                <p id="pk" class="d-none">{{account.pk}}</p>
-                <h2 class="card-title text-primary " id="name">{{account.name}}</h2>
-                <p id="phone">{{account.phone}}</p>
-            </div>
-            <div class="card-body">
-                <div class="card-group d-flex justify-content-around">
-                    <p class="card-text" >نوع الحساب: <span id="type">{{account.type}}</span></p>
-                    <p class="card-text" >تاريخ التسجيل: <span id="date">{{account.register_date}}</span></p>
-                </div>
-                <div class="card-group d-flex justify-content-around">
-                    <p class="card-text" >حالة الحساب: <span id="active">{% if account.active %}نشط{% else %}موقف{% endif %}</span></p>
-                    <p class="card-text" >أعلى قيمة للسحب : <span id="allow_max">{{account.allow_max}}</span></p>
-                </div>
-            </div>
-            <div class="card-footer">
-                <div class="card-group align-items-start justify-content-around">
-                    <div class="btns_actions w-100 d-flex justify-content-around">
-                        <button class="btn btn-outline-primary btn-sm btn_update_account" id="btn_update"  type="button" data-toggle="modal" data-target="#updateAccount">تعديل</button>
-                        <button class="btn btn-outline-danger btn-sm btn_delete_account" id="btn_delete" type="button" data-toggle="modal" data-target="#deleteAccount" data-account-id="{{account.id}}">حذف</button>
-                      </div>
-                </div>
-                
-            </div>
-        </div>
+    <h2 class="card-title text-primary text-center m-4">كل الحسابات</h2>
+
+<div class="card mb-3">
+    <div class="card-header text-center">
+      <a href="#" class="btn btn-outline-primary" data-toggle="modal" data-target="#AccountAdd">
+        <span class="float-right">
+          <i class="fa fa-plus"></i>
+          حساب جديد
+        </span>
+      </a>
     </div>
+    
+    <div class="card-body">
+      <div class="table-responsive ">
+        <table class="table table-hover text-center" id="dataTable" width="100%" cellspacing="0">
+          <thead>
+            <tr>
+              <th>الاسم</th>
+              <th>نوع الحساب</th>
+              <th>تحكم</th>
+            </tr>
+          </thead>
+          <tfoot>
+            <tr>
+                <th>الاسم</th>
+                <th>نوع الحساب</th>
+                <th>تحكم</th>
+            </tr>
+          </tfoot>
+          <tbody>
+            {% for acc in accounts %}
+            <tr id="rowAccount">
+              <td id="pk" class="d-none">{{acc.pk}}</td>
+              <td id="name"><a href="{% url 'account' acc.pk  %}">{{acc.name}}</a></td>
+              <td class="{% if acc.type == 'مدين' %} text-danger {% else %} text-success  {% endif %}"><span id="type">{{acc.type}}</span></td>
+              <td id="phone" class="d-none">{{acc.phone}}</td>
+              <td id="allow_max" class="d-none">{{acc.allow_max}}</td>
+              <td id="active" class="d-none">{{acc.active}}</td>
+              <td class="w-25">
+                <div class="btns_actions w-100 d-flex justify-content-around">
+                  <button class="btn btn-outline-primary btn-sm btn_update_account" id="btn_update" type="button" data-toggle="modal" data-target="#updateAccount">تعديل</button>
+                  <button class="btn btn-outline-danger btn-sm btn_delete_account" id="btn_delete" type="button" data-toggle="modal" data-target="#deleteAccount" data-account-id="{{acc.id}}">حذف</button>
+                </div>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+</div>
 {% endblock content %}
