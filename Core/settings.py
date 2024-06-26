@@ -37,7 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'debt_management.apps.DebtManagementConfig'
+    'debt_management.apps.DebtManagementConfig',
+
+    'the_profile'
 ]
 
 MIDDLEWARE = [

@@ -2,10 +2,12 @@ from django.shortcuts import render,HttpResponseRedirect,HttpResponse
 from django.urls import reverse
 from .models import Account,Transaction
 from datetime import date
-
 from .forms import AccountAdd,TransactionAdd
+
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
+@login_required
 def index(request):
     if request.method == "POST":
         newTransaction = TransactionAdd(request.POST)
@@ -17,7 +19,8 @@ def index(request):
         'Transactions':Transaction.objects.all().order_by('-id')
     }
     return render(request,'index.html',context)
-
+    
+@login_required
 def transactions(request,id):
     filtered =Transaction.objects.filter( account=id)
     withdraw =sum(item.balance for item in filtered.filter(type='سحب') )
@@ -25,7 +28,7 @@ def transactions(request,id):
     context = {'Account':Account.objects.get(id=id),'withdraw':withdraw , 'deposit':deposit,'remaining':int(withdraw)-int(deposit), 'transactions':filtered}
     
     return render(request,'transactions.html',context)
-
+@login_required
 def account(request,id):
     filtered = Account.objects.get(pk=id)
     context={
@@ -34,7 +37,7 @@ def account(request,id):
         'account':filtered}
 
     return render(request,'account.html',context)
-
+@login_required
 def accounts(request):
     if request.method =="POST":
         form = AccountAdd(request.POST)
@@ -47,7 +50,7 @@ def accounts(request):
         
     }
     return render(request,'accounts.html',context=context)
-
+@login_required
 def updateTransaction(request):
     id = request.POST.get('pk')
     updateTransaction = Transaction.objects.get(pk=id)
@@ -60,13 +63,13 @@ def updateTransaction(request):
     updateTransaction.save()
 
     return HttpResponseRedirect(reverse('Home'))
-
+@login_required
 def deleteTransaction(request):
     delete_id = request.POST.get('delete_id')
     Transaction.objects.get(pk=delete_id).delete()
 
     return HttpResponseRedirect(reverse('Home'))
-
+@login_required
 def updateAccount(request):
     id = request.POST.get('pk')
     updateAccount = Account.objects.get(pk=id)
@@ -78,7 +81,7 @@ def updateAccount(request):
     updateAccount.save()
 
     return HttpResponseRedirect(reverse('accounts'))
-
+@login_required
 def deleteAccount(request):
     delete_id = request.POST.get('delete_account_id')
     Account.objects.get(pk=delete_id).delete()

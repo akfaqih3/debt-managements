@@ -1,0 +1,22 @@
+
+
+<div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="TransactionModalLabel" aria-hidden="true" >
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="TransactionModalLabel">عملية جديدة</h4>
+                <button class="btn btn-outline-danger" type="button" data-dismiss="modal" aria-label="close">X</button>
+            </div>
+            <div class="modal-body">
+                <h3>Do you want to logout ?</h3>
+                <form action="{% url 'Profile:logout' %}" method="POST">
+                    {% csrf_token %}
+                        {{form.as_p}}
+                    <input type="submit" value="logout">
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+</div>
