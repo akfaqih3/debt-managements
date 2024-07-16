@@ -25,7 +25,14 @@ def transactions(request,id):
     filtered =Transaction.objects.filter( account=id)
     withdraw =sum(item.balance for item in filtered.filter(type='سحب') )
     deposit =sum(item.balance for item in filtered.filter(type='سداد') )
-    context = {'Account':Account.objects.get(id=id),'withdraw':withdraw , 'deposit':deposit,'remaining':int(withdraw)-int(deposit), 'transactions':filtered}
+    context = {
+                'TransactionForm': TransactionAdd,
+                'AccountForm':AccountAdd,
+                'Account':Account.objects.get(id=id),
+                'withdraw':withdraw ,
+                'deposit':deposit,
+                'remaining':int(withdraw)-int(deposit),
+                'transactions':filtered}
     
     return render(request,'transactions.html',context)
 @login_required
@@ -53,9 +60,9 @@ def accounts(request):
 @login_required
 def updateTransaction(request):
     id = request.POST.get('pk')
-    updateTransaction = Transaction.objects.get(pk=id)
+    updateTransaction = Transaction.objects.get(pk=int(id))
     updateTransaction.type = request.POST.get('type')
-    updateTransaction.account = Account.objects.get(name=request.POST.get('account'))
+    updateTransaction.account = Account.objects.get(pk=request.POST.get('account'))
     updateTransaction.balance = request.POST.get('balance')
     updateTransaction.content = request.POST.get('content')
     updateTransaction.date = request.POST.get('transaction_date')

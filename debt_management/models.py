@@ -34,7 +34,7 @@ class Transaction(models.Model):
     account = models.ForeignKey(Account,on_delete=models.PROTECT)
     balance = models.DecimalField(default=0.00,max_digits=7,decimal_places=2 ,verbose_name='المبلغ')
     content = models.TextField(null=True,blank=True,verbose_name='البيان')
-    date = models.DateField(default=date.today,verbose_name='التاريخ')
+    date = models.DateField(auto_now=True,verbose_name='التاريخ')
 
     def __str__(self):
         return f"{self.account}      {self.balance}"

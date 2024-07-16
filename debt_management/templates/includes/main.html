@@ -36,7 +36,7 @@
                         {% for Tran in Transactions %}
                         <tr class="table_row">
                           <td id="pk" class="d-none">{{Tran.pk}}</td>
-                          <td id="account"><a href="{% url 'transactions' Tran.account.id  %}">{{Tran.account}}</a></td>
+                          <td id="account" data-order="{{Tran.account.pk}}"><a href="{% url 'transactions' Tran.account.id  %}">{{Tran.account}}</a></td>
                           <td id="content">{{Tran.content}}</td>
                           <td id="balance" class="text-success {% if Tran.type == 'سحب' %} text-danger {% endif %}" >{{Tran.balance}}</td>
                           <td id="type" class="d-none">{{Tran.type}}</td>

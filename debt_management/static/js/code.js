@@ -19,10 +19,9 @@ $(document).ready(function(){
 
         form.find("#pk").val(row.find("#pk").text());
         form.find("#id_type").val(row.find("#type").text());
-        form.find("#id_account").val(row.find("#account").text());
+        form.find("#id_account").val(row.find("#account").data('order'));
         form.find("#id_balance").val(row.find("#balance").text());
         form.find("#id_content").val(row.find("#content").text());
-        //form.find("#transaction_date").val(transaction_date);
     });
 
     $(".btn_update_account").click(function(){

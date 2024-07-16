@@ -52,13 +52,13 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="TransactionModalLabel">عملية جديدة</h4>
+                <h4 class="modal-title" id="TransactionModalLabel">تعديل عملية</h4>
                 <button class="btn btn-outline-danger" type="button" data-dismiss="modal" aria-label="close">X</button>
             </div>
             <div class="modal-body">
                 <form action="{% url 'updateTransaction' %}" method="POST">
                     {% csrf_token %}
-                    <input type="text" name="pk" id="pk" class="d-none">
+                    <input type="text" name="pk" id="pk" value="" class="d-none">
                         {{TransactionForm.as_p}}
                     <div>
                         <input type="submit" class="btn btn-success" value="حفظ">
