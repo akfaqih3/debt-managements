@@ -27,9 +27,8 @@ class AccountAdd(forms.ModelForm):
         fields= ['name','phone','type','allow_max','active']
 
 
-accounts_choice = [
-    (value,label) for value,label in Account.objects.filter(active=True).values_list('id','name')
-]
+# accounts_choice = [  (value,label) for value,label in Account.objects.filter(active=True).values_list('id','name')]
+
 class TransactionAdd(forms.ModelForm):
     type =forms.ChoiceField(choices=transaction_type,label='نوع العملية',widget=forms.Select(attrs={'class':'form-control'}))
     balance = forms.DecimalField(max_digits=7,label='المبلغ',decimal_places=2,widget=forms.TextInput(attrs={'class':'form-control'}))

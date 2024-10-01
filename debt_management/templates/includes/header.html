@@ -24,7 +24,7 @@
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="messagesDropdown">
             <a class="dropdown-item" href="{% url 'accounts' %}"> <i class="fa fa-tag"></i>الحسابات  </a>
-            <a class="dropdown-item" href="#"> <i class="fa fa-tags"></i> تقرير يومي</a>
+            <a class="dropdown-item" href="{% url "Home" %}"> <i class="fa fa-tags"></i> التحويلات</a>
           </div>
         </li>
         <li class="nav-item dropdown no-arrow ml-3">
@@ -34,9 +34,6 @@
           <div class="dropdown-menu" aria-labelledby="userDropdown">
             <div class="dropdown-header">{{user}}</div>
             <a class="dropdown-item" href="{% url 'Profile:profile' %}"> <i class="fa fa-user"></i> الملف الشخصي</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#"> <i class="fa fa-cog"></i> الاعدادات</a>
-            <a class="dropdown-item" href=""> <i class="fa fa-line-chart"></i> إحصائيات</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal"> <i class="fa fa-power-off"></i> تسجيل خروج</a>
           </div>
